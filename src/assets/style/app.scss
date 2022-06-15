@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  outline: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+#app {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// Display user selections
+h1, h2, h3, h4, h5, p, small {
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  background: #efefef;
+}

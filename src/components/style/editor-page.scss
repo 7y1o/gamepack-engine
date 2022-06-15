@@ -1,0 +1,70 @@
+
+// Menu items panel
+.menubar {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: #efefef;
+  border-bottom: 1px solid rgba(black, .08);
+  color: #2d2d2d;
+  padding: 0 16px;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  // Text items
+  p {
+    margin: 0;
+    padding: 0;
+
+    // Logo text
+    &.logo {
+      font: 700 16px 'Inter';
+      margin-right: 16px;
+    }
+  }
+}
+
+.main {
+  position: fixed;
+  top: 32px;
+  left: 0;
+  right: 0;
+  bottom: 32px;
+}
+
+.footer {
+  position: fixed;
+  z-index: 1;
+  height: 32px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid rgba(black, .08);
+  padding: 0 8px;
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  p {
+    padding: 0;
+    margin: 0;
+    opacity: .75;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  .progress {
+    width: 100px;
+    margin-right: 8px;
+  }
+}
