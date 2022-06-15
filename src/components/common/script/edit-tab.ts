@@ -1,7 +1,12 @@
 import { defineComponent } from 'vue';
+import CanvasEditor from '../../../engine/canvas';
+import CreationPanel from '../../editor/CreationPanel.vue';
+import bus from '../../../utils/event-bus';
 
 export default defineComponent({
 	data: () => ({
+		// Common editor canvas
+		canvas: null as unknown as HTMLCanvasElement,
 
 		// Creation panel
 		createPanelSize: 300,
@@ -11,7 +16,14 @@ export default defineComponent({
 		inspectorSize: 300,
 		isInspectorResizing: false,
 	}),
+	mounted() {
+		this.canvas = document.querySelector('#editor-canvas')!;
+		if (this.canvas) new CanvasEditor(this.canvas);
+	},
 	props: {},
+	components: {
+		CreationPanel
+	},
 	methods: {
 		
 		// Start creation panel resize
@@ -44,8 +56,31 @@ export default defineComponent({
 
 		// Handle mouse up
 		handleMouseButtonUp() {
-			if (this.isCreatePanelResizing) this.isCreatePanelResizing = false;
-			if (this.isInspectorResizing) this.isInspectorResizing = false;
+			if (this.isCreatePanelResizing) {
+				this.isCreatePanelResizing = false;
+				bus.emit('engine:settings:update', {
+					editor: {
+						panels: {
+							creation: {
+								width: this.createPanelSize
+							}
+						}
+					}
+				});
+			}
+
+			if (this.isInspectorResizing) {
+				this.isInspectorResizing = false;
+				bus.emit('engine:settings:update', {
+					editor: {
+						panels: {
+							inspector: {
+								width: this.createPanelSize
+							}
+						}
+					}
+				});
+			}
 		},
 	},
 });
