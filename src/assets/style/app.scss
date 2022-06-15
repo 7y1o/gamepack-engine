@@ -2,6 +2,25 @@
   box-sizing: border-box;
   outline: 0;
   font-family: 'Inter', sans-serif;
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #dfdfdf;
+    border-radius: 8px;
+
+    &:hover {
+      background: #cfcfcf;
+    }
+  }
 }
 
 #app {
